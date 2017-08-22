@@ -1244,9 +1244,11 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " For nerdTreeSyntaxHighlight
 "
-let g:NERDTreeDisableFileExtensionHighlight = 1
-let g:NERDTreeDisableExactMatchHighlight = 1
-let g:NERDTreeDisablePatternMatchHighlight = 1
+"
+" let g:NERDTreeDisableFileExtensionHighlight = 1
+" let g:NERDTreeDisableExactMatchHighlight = 1
+" let g:NERDTreeDisablePatternMatchHighlight = 1
+
 "
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -1285,14 +1287,14 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 
 
 ""nerdtree git plugin
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+" let g:NERDTreeIndicatorMapCustom = {
+"     \ "Modified"  : "✹",
+"     \ "Staged"    : "✚",
+"     \ "Untracked" : "✭",
+"     \ "Renamed"   : "➜",
+"     \ "Unmerged"  : "═",
+"     \ "Deleted"   : "✖",
+"     \ "Dirty"     : "✗",
+"     \ "Clean"     : "✔︎",
+"     \ "Unknown"   : "?"
+"     \ }
