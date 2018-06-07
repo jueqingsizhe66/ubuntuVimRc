@@ -11,7 +11,7 @@ Plug 'ervandew/supertab'
 "Plug 'honza/snipmate-snippets'
 Plug 'scrooloose/snipmate-snippets' 
 "python
-"Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 "Plug 'mattn/zencoding-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
@@ -251,6 +251,16 @@ Plug 'mattn/calendar-vim'
 
 
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/gv.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
+Plug 'roosta/vim-srcery'
+
+""
+" If installed using git
+Plug '~/.fzf'
+
 
 Plug 'tpope/vim-rhubarb'
 
@@ -296,6 +306,15 @@ Plug 'hrj/vim-DrawIt'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/tiagofumo/vim-nerdtree-syntax-highlight'
+
+
+Plug 'vim-scripts/paredit.vim'
+
+
+
+Plug 'bronson/vim-trailing-whitespace'
+
+Plug 'rking/ag.vim'
 
 call plug#end()
 

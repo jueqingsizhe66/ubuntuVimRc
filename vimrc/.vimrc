@@ -72,15 +72,16 @@ syntax on
 "--------
 " color scheme
 "set background=light
-set background=dark
+"set background=dark
 "let TERM=xterm
 "set background=""
 
+"color solarized
 "color vividchalk  "the default setting  But Ichange it by zhaolaing
 "color distinguished
 "color monakai
 "color blackboard
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 "let g:solarized_contrast="high"    "default value is normal
 "g:solarized_termcolors=   16      |   256
 "g:solarized_termtrans =   0       |   1
@@ -112,11 +113,13 @@ let g:solarized_menu      =0
 " normal  high low
 "let g:solarized_visibility="low"
 let g:solarized_visibility="normal"
-colorscheme solarized
+"colorscheme solarized
 "colorscheme desert
 "colorscheme violet
 "color desert
 "color fisa
+
+colorscheme srcery
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -1298,3 +1301,100 @@ let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets th
 "     \ "Clean"     : "✔︎",
 "     \ "Unknown"   : "?"
 "     \ }
+"
+"
+
+" If installed using git
+set rtp+=~/.fzf
+
+" ===limelight
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+" === Goyo
+" changing from the default 80 to accomodate for UndoTree panel
+let g:goyo_width = 104
+
+function! s:goyo_enter()
+  if has('gui_running')
+   ""   :call FullScreen()
+   let w:full_screen=1
+""   set fullscreen
+    set background=light
+    set linespace=7
+  elseif exists('$TMUX')
+    silent !tmux set status off
+  endif
+  Limelight 0.8
+  NERDTreeToggle
+endfunction
+
+function! s:goyo_leave()
+  if has('gui_running')
+   let w:full_screen=0
+""    set nofullscreen
+    set background=dark
+    set linespace=0
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+  Limelight!
+  NERDTreeToggle
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+nmap <Leader>h :Goyo<CR>
+xmap <Leader>h :Goyo<CR>
+
+
+iabbrev xdate <c-r>=strftime("%Y-%m-%d")<cr>
+
+
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=9
+endif
+
+"let g:vimproc_dll_path=$VIMRUNTIME."/vimproc_win64.dll"
+"let g:vimproc#dll_path="C:\\Users\\yzl\\.vim\\vimproc_win64.dll"
+"" for vimproc 
+let g:unite_source_history_yank_enable = 1
+try
+  let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+catch
+endtry
+" search a file in the filetree
+nnoremap <space><space> :split<cr> :<C-u>Unite -start-insert file_rec<cr>
+" reset not it is <C-l> normally
+:nnoremap <space>r <Plug>(unite_restart)
+
+" --- type  ,q to search the word in all files in the current dir
+nmap <leader>q :Ag <c-r>=expand("<cword>")<cr><cr>
+nnoremap <space>/ :Ag
+
+
+
+
